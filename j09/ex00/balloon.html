@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+		<script>
+			var i = 200;
+			var color = 1;
+			function zoom(inc)
+			{
+				if (i <= 420)
+					i += inc;
+				if (i > 420)
+					i = 200;
+				document.getElementById('balloon').style.height = i + 'px';
+				document.getElementById('balloon').style.width = i + 'px';
+				color++;
+				if (color == 4)
+					color = 1;
+				color_change();
+				if (i > 420)
+					i = 200;
+				}
+
+			function color_change()
+			{
+				if (color == 1)
+					document.getElementById('balloon').style.backgroundColor = "red";
+				else if (color == 2)
+					document.getElementById('balloon').style.backgroundColor = "green";
+				else if (color == 3)
+					document.getElementById('balloon').style.backgroundColor = "blue";
+				}
+			i = 200;
+			function mouse(dec)
+			{
+				if (i > 200)
+					i -= dec;
+				document.getElementById('balloon').style.height = i + 'px';
+				document.getElementById('balloon').style.width = i + 'px';
+				color--;
+				if (color == 0)
+					color = 3;
+				color_change();
+				if (i <= 200)
+					i = 200;
+			}
+		</script>
+	<div id="balloon" style="background-color: red; height: 200px; width: 200px; border-radius: 100%;" onclick="zoom(10);" onmouseout="mouse(5);"></div>
+</html>

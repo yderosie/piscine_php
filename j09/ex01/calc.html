@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+	<head>
+		<title>calc</title>
+
+	</head>
+	<body onload="caller()">
+		<form method="post" name="form" onsubmit="return calc();">
+			<input type="text" name="left"/>
+			<select name="ope" id="ope">
+				<option value="add">+</option>
+				<option value="sub">-</option>
+				<option value="mult">*</option>
+				<option value="div">/</option>
+				<option value="mod">%</option>
+			</select>
+			<input type="text" name="right"/>
+			<input type="submit" value="Try me!" name="button"/>
+		</form>
+		<script>
+			
+			function calc()
+			{
+				var operateur = document.forms["form"].ope.value;
+				var button = document.forms["form"].button.value;
+				var left = document.forms["form"].left.value;
+				var right = document.forms["form"].right.value;
+				left = Number(left);
+				right = Number(right);
+				if (left !== parseInt(left, 10))
+				{
+					alert("Error :(");
+					return:
+				}
+				if (right !== parseInt(right, 10))
+				{
+					alert("Error :(");
+					return;
+				}
+				var result;
+				if (left >= 0 && right >= 0 /*&& left === 10 && right === 10*/)
+				{
+					if (operateur == "add")
+						result = left + right;
+					else if (operateur == "sub")
+						result = left - right;
+					else if (operateur == "mult")
+						result = left * right;
+					else if (operateur == "div")
+					{
+						if (right != 0)
+							result = left / right;
+						else
+						{
+							console.log("It's over 9000!");
+							alert("It's over 9000!");
+							return;
+						}
+					}
+					else if (operateur == "mod")
+					{
+						if (right != 0)
+							result = left % right;
+						else
+						{
+							console.log("It's over 9000!");
+							alert("It's over 9000!");
+							return;
+						}
+					}
+					console.log(result);
+					alert(result);
+				}
+				else
+				{
+					alert("Error :(");
+					return;
+				}
+			}
+			function caller()
+			{
+				setInterval(function () {alert("Please, use me...")}, 30000);
+			 }
+		</script>
+	</body>
+</html>
+
